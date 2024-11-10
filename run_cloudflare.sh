@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# Ö´ĞĞÃüÁî
-./CloudflareST -tl 9999 -dn 10 -tp 443
+# æ‰§è¡Œå‘½ä»¤
+./CloudflareST/CloudflareST -o result.csv -tl 9999 -dn 10 -tp 443
