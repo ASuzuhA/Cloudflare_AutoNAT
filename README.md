@@ -25,24 +25,47 @@ Cloudflare_AutoNAT 相关项目仅供教育、研究和安全测试目的而设�
 ## \# 快速使用
 
 ### 文件结构简介
+# Cloudflare AutoNAT
 
-Cloudflare_AutoNAT/
-├── canat.sh # 主脚本
-├── set_cron_jobs.sh # 定时执行-脚本内规定为凌晨3点
-├── socat/ # 端口转发
-│ ├── port.txt # 本地与CDN端口配置文件
-│ ├──socat.sh # 端口转发配置
-│ └──target_IP.sh # 端口转发配置检测与IP替换
-├── CloudflareST/ # CloudflareST项目文件
-│ ├── CloudflareST # CloudflareST主程序
-│ ├── usage.md # 使用说明文档
-│ ├──cfst_hosts.sh
-│ ├──ip.txt
-│ ├──ipv6.txt
-├── README.md # 项目的说明文件
-└── ip.txt # run_cloudflare.sh所需IP库
+Cloudflare AutoNAT 是一个自动化脚本，旨在通过 Cloudflare 提供的服务进行端口转发和 IP 替换。该项目包含多个脚本和配置文件，便于用户快速设置和使用。
+
+## 项目结构
+
+-Cloudflare_AutoNAT/
+-├── canat.sh # 主脚本，执行主要的自动化任务
+-├── set_cron_jobs.sh # 定时执行脚本，设置为每天凌晨3点执行
+-├── socat/ # 端口转发相关文件
+-│ ├── port.txt # 本地与 CDN 端口配置文件
+-│ ├── socat.sh # 端口转发配置脚本
+-│ └── target_IP.sh # 端口转发配置检测与 IP 替换脚本
+-├── CloudflareST/ # CloudflareST 项目文件
+-│ ├── CloudflareST # CloudflareST 主程序
+-│ ├── 用法.md # 使用说明文档
+-│ ├── cfst_hosts.sh # CloudflareST 主程序的辅助脚本
+-│ ├── ip.txt # 存储 IP 地址的文件
+-│ └── ipv6.txt # 存储 IPv6 地址的文件
+-├── README.md # 项目的说明文件
+-└── ip.txt # run_cloudflare.sh 所需的 IP 库
 
 
+## 文件说明
+
+- **canat.sh**: 该脚本是项目的主入口，负责执行主要的自动化任务。
+- **set_cron_jobs.sh**: 该脚本用于设置定时任务，默认配置为每天凌晨3点执行。
+- **socat/**: 该目录包含与端口转发相关的文件。
+  - **port.txt**: 配置本地与 CDN 的端口映射。
+  - **socat.sh**: 端口转发的配置脚本，负责启动 socat 服务。
+  - **target_IP.sh**: 检测端口转发配置并进行 IP 替换的脚本。
+- **CloudflareST/**: 该目录包含 CloudflareST 项目的相关文件。
+  - **CloudflareST**: CloudflareST 的主程序文件。
+  - **用法.md**: 提供 CloudflareST 的使用说明和示例。
+  - **cfst_hosts.sh**: CloudflareST 的辅助脚本，用于处理主程序的相关任务。
+  - **ip.txt**: 存储可用的 IP 地址列表。
+  - **ipv6.txt**: 存储可用的 IPv6 地址列表。
+- **README.md**: 本文件，提供项目的概述和使用说明。
+- **ip.txt**: 该文件包含 `run_cloudflare.sh` 所需的 IP 地址库。
+
+- 
 ### 下载运行
 1. 下载编译好的可执行文件（[Github Releases]([https://github.com/ASuzuhA/Cloudflare_AutoNAT/releases)
 - **注意**：文件路径必须放到/root目录下，，即是/root/canat/xxx......
