@@ -1,5 +1,5 @@
 # Cloudflare_AutoNAT
-首先声明，此项目是借用CloudflareST做核心筛选工作，IP质量得以保证，在此为基础编写程序以实现自动化与端口转发，
+首先声明，此项目是调用CloudflareST做核心筛选工作，IP质量得以保证，在此为基础编写程序以实现自动化与端口转发，
 ［Cloudflare_AutoNAT］:在[XUI2/CloudflareSpeedtest](https://github.com/XIU2/CloudflareSpeedTest)作为优选IP基础，做出的自动化方案,,定时筛选优选IP，并自动更换最优IP。Cloudflare_AutoNAT会帮忙筛选最优ip并进行端口转发，无需自行筛选更换，Clouflare_AutoNAT为此为目的开发，目前只支持Linux版本，，（毕竟才刚刚开始嘛）
 
 
@@ -45,3 +45,16 @@ chmod +x Cloundflare_AutoNAT
 ./CAT.sh
 ```
 </details>
+
+
+****
+
+## 感谢项目
+
+- _https://github.com/XIU2/CloudflareSpeedTest_
+- _http://www.dest-unreach.org/socat/
+  
+> _感谢CloudflareSpeedTest项目提供核心技术支持，送朵小花花表示感谢_(•̀ω•́ 」∠)_ _  
+> _本软件基于该项目制作，做了点自动化设置，灵感来自CFNAT_
+ 
+****
