@@ -24,8 +24,23 @@ Cloudflare_AutoNAT 相关项目仅供教育、研究和安全测试目的而设�
 ****
 ## \# 快速使用
 
-###文件结构简介
+### 文件结构简介
 
+Cloudflare_AutoNAT/
+├── canat.sh # 主脚本
+├── set_cron_jobs.sh # 定时执行-脚本内规定为凌晨3点
+├── socat/ # 端口转发
+│ ├── port.txt # 本地与CDN端口配置文件
+│ ├──socat.sh # 端口转发配置
+│ └──target_IP.sh # 端口转发配置检测与IP替换
+├── CloudflareST/ # CloudflareST项目文件
+│ ├── CloudflareST # CloudflareST主程序
+│ ├── usage.md # 使用说明文档
+│ ├──cfst_hosts.sh
+│ ├──ip.txt
+│ ├──ipv6.txt
+├── README.md # 项目的说明文件
+└── ip.txt # run_cloudflare.sh所需IP库
 
 
 ### 下载运行
