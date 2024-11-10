@@ -25,23 +25,20 @@ CFnat 相关项目仅供教育、研究和安全测试目的而设计和开发�
 ## \# 快速使用
 
 ### 下载运行
-1. 下载编译好的可执行文件（ [Github Releases]([https://github.com/ASuzuhA/Cloudflare_AutoNAT/releases)
-
+1. 下载编译好的可执行文件（[Github Releases]([https://github.com/ASuzuhA/Cloudflare_AutoNAT/releases)
+- **注意**：文件路径必须放到/root目录下，，即是/root/canat/xxx......
 
 <summary><code><strong>「 Linux 系统下的使用示例 」</strong></code></summary>
 
 ``` yaml
-# git clone Cloundflare_AutoNAT
-git clone https://github.com/ASuzuhA/Cloudflare_AutoNAT.git
-
-# 进入文件夹
-cd Cloundflare_AutoNAT
+#进项目目录
+cd /root/canat
 
 # 赋予执行权限
-chmod +x Cloundflare_AutoNAT
+chmod +x canat.sh
 
 # 运行
-./CAT.sh
+./canat.sh
 ```
 
 
