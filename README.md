@@ -29,24 +29,6 @@ Cloudflare_AutoNAT 相关项目仅供教育、研究和安全测试目的而设�
 
 Cloudflare AutoNAT 是一个自动化脚本，旨在通过 Cloudflare 提供的服务进行端口转发和 IP 替换。该项目包含多个脚本和配置文件，便于用户快速设置和使用。
 
-## 项目结构
-
-Cloudflare_AutoNAT/
-├── canat.sh # 主脚本，执行主要的自动化任务
-├── set_cron_jobs.sh # 定时执行脚本，设置为每天凌晨3点执行
-├── socat/ # 端口转发相关文件
-│ ├── port.txt # 本地与 CDN 端口配置文件
-│ ├── socat.sh # 端口转发配置脚本
-│ └── target_IP.sh # 端口转发配置检测与 IP 替换脚本
-├── CloudflareST/ # CloudflareST 项目文件
-│ ├── CloudflareST # CloudflareST 主程序
-│ ├── 用法.md # 使用说明文档
-│ ├── cfst_hosts.sh # CloudflareST 主程序的辅助脚本
-│ ├── ip.txt # 存储 IP 地址的文件
-│ └── ipv6.txt # 存储 IPv6 地址的文件
-├── README.md # 项目的说明文件
-└── ip.txt # run_cloudflare.sh 所需的 IP 库
-
 
 ## 文件说明
 
