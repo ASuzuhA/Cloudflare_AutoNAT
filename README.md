@@ -28,8 +28,7 @@ CFnat 相关项目仅供教育、研究和安全测试目的而设计和开发�
 1. 下载编译好的可执行文件（ [Github Releases]([https://github.com/ASuzuhA/Cloudflare_AutoNAT/releases)
 
 
-<details>   
-「 Linux 系统下的使用示例 」
+<summary><code><strong>「 Linux 系统下的使用示例 」</strong></code></summary>
 
 ``` yaml
 # git clone Cloundflare_AutoNAT
@@ -44,7 +43,6 @@ chmod +x Cloundflare_AutoNAT
 # 运行
 ./CAT.sh
 ```
-</details>
 
 
 ****
