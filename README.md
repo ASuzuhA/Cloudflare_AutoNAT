@@ -26,13 +26,22 @@ CFnat 相关项目仅供教育、研究和安全测试目的而设计和开发�
 
 ### 下载运行
 1. 下载编译好的可执行文件（ [Github Releases]([https://github.com/ASuzuhA/Cloudflare_AutoNAT/releases)
-<summary><code><strong>「 点击查看 Linux 系统下的使用示例 」</strong></code></summary>
 
-****
 
-以下命令仅为示例，版本号和文件名请前往 [**Releases**](https://github.com/XIU2/CloudflareSpeedTest/releases) 查看。
+<details>   
+<summary><code><strong>「 Linux 系统下的使用示例 」</strong></code></summary>
 
 ``` yaml
-# 如果是第一次使用，则建议创建新文件夹（后续更新时，跳过该步骤）
-mkdir CAT
+# git clone Cloundflare_AutoNAT
+git clone https://github.com/ASuzuhA/Cloudflare_AutoNAT.git
 
+# 进入文件夹
+cd Cloundflare_AutoNAT
+
+# 赋予执行权限
+chmod +x Cloundflare_AutoNAT
+
+# 运行
+./CAT.sh
+```
+</details>
