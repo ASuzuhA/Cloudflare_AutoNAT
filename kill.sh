@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# ²éÕÒ²¢É±µôËùÓĞ socat ½ø³Ì
+# æŸ¥æ‰¾å¹¶æ€æ‰æ‰€æœ‰ socat è¿›ç¨‹
 pkill socat
 
-# ¼ì²éÊÇ·ñ³É¹¦
 if [ $? -eq 0 ]; then
     echo "All socat processes have been terminated."
 else
