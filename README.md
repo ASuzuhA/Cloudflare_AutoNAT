@@ -41,7 +41,7 @@ Cloudflare AutoNAT 是一个自动化脚本，旨在通过 Cloudflare 提供的�
   - **target_IP.sh**: 检测端口转发配置并进行 IP 替换的脚本。
 - **CloudflareST/**: 该目录包含 CloudflareST 项目的相关文件。
   - **CloudflareST**: CloudflareST 的主程序文件。
-  - **用法.md**: 提供 CloudflareST 的使用说明和示例。
+  - **README.md**: 提供 CloudflareST 的使用说明和示例。
   - **cfst_hosts.sh**: CloudflareST 的辅助脚本，用于处理主程序的相关任务。
   - **ip.txt**: 存储可用的 IP 地址列表。
   - **ipv6.txt**: 存储可用的 IPv6 地址列表。
