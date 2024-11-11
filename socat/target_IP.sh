@@ -1,81 +1,64 @@
 #!/bin/bash
 
-# ¶¨Òå CSV ÎÄ¼þÂ·¾¶
 CSV_FILE="/root/canat/CloudflareST/result.csv"
 
-# ¶¨Òå¶Ë¿ÚÎÄ¼þÂ·¾¶
 PORT_FILE="/root/canat/socat/port.txt"
 
-# ´Ó PORT_FILE ÖÐ¶ÁÈ¡ LOCAL_PORT
 LOCAL_PORT=$(grep '^LOCAL_PORT=' "$PORT_FILE" | cut -d'=' -f2)
 
 TARGET_PORT=$(grep '^TARGET_PORT=' "$PORT_FILE" | cut -d'=' -f2)
 
-# ¶ÁÈ¡µÚ¶þÐÐµÄ IP µØÖ·
 TARGET_IP=$(sed -n '2p' "$CSV_FILE" | cut -d',' -f1)
 
-# ¼ì²éÊÇ·ñ³É¹¦»ñÈ¡µ½ IP µØÖ·
 if [ -z "$TARGET_IP" ]; then
-    echo "Î´ÄÜ»ñÈ¡µ½Ä¿±ê IP µØÖ·¡£"
+    echo "æœªèƒ½èŽ·å–åˆ°ç›®æ ‡ IP åœ°å€ã€‚"
     exit 1
 fi
 
-# Êä³ö»ñÈ¡µ½µÄ IP µØÖ·
-echo "»ñÈ¡µ½µÄÄ¿±ê IP µØÖ·: $TARGET_IP"
+echo "èŽ·å–åˆ°çš„ç›®æ ‡ IP åœ°å€: $TARGET_IP"
 
-# ´´½¨ socat ½Å±¾Â·¾¶
 SOCAT_SCRIPT="/root/canat/socat/socat.sh"
 
-# ¼ì²é socat ½Å±¾ÊÇ·ñ´æÔÚ
 if [ -f "$SOCAT_SCRIPT" ]; then
-    # Ê¹ÓÃ sed Ìæ»»ÏÖÓÐ½Å±¾ÖÐµÄ TARGET_IP
     sed -i "s|^TARGET_IP=.*|TARGET_IP=$TARGET_IP|" "$SOCAT_SCRIPT"
     sed -i "s|^TARGET_PORT=.*|TARGET_PORT=$TARGET_PORT|" "$SOCAT_SCRIPT"
     sed -i "s|^LOCAL_PORT=.*|LOCAL_PORT=$LOCAL_PORT|" "$SOCAT_SCRIPT"
-    echo "ÒÑ¸üÐÂ socat ½Å±¾ÖÐµÄ TARGET_IP Îª: $TARGET_IP"
+    echo "å·²æ›´æ–° socat è„šæœ¬ä¸­çš„ TARGET_IP ä¸º: $TARGET_IP"
 else
-    # Èç¹û½Å±¾²»´æÔÚ£¬´´½¨ÐÂµÄ socat ½Å±¾
     cat <<EOL > "$SOCAT_SCRIPT"
 #!/bin/bash
 
-# socat ×ª·¢½Å±¾
-# ½«±¾µØ¶Ë¿Ú $LOCAL_PORT ×ª·¢µ½Ä¿±ê IP£¨Cloudflare CDN µÄ IP£©ºÍ¶Ë¿Ú TARGET_PORT
+# socat è½¬å‘è„šæœ¬
+# å°†æœ¬åœ°ç«¯å£ $LOCAL_PORT è½¬å‘åˆ°ç›®æ ‡ IPï¼ˆCloudflare CDN çš„ IPï¼‰å’Œç«¯å£ TARGET_PORT
 
 LOCAL_PORT=$LOCAL_PORT
-TARGET_IP=$TARGET_IP  # Ê¹ÓÃ´Ó CSV ÎÄ¼þÖÐ»ñÈ¡µÄÄ¿±ê IP
+TARGET_IP=$TARGET_IP  # ä½¿ç”¨ä»Ž CSV æ–‡ä»¶ä¸­èŽ·å–çš„ç›®æ ‡ IP
 TARGET_PORT=$TARGET_PORT
 
-# Æô¶¯ socat
 socat TCP-LISTEN:\$LOCAL_PORT,fork TCP:\$TARGET_IP:\$TARGET_PORT
 EOL
 
-    # ¸ø socat ½Å±¾Ìí¼ÓÖ´ÐÐÈ¨ÏÞ
     chmod +x "$SOCAT_SCRIPT"
-    echo "socat ½Å±¾ÒÑ´´½¨: $SOCAT_SCRIPT"
+    echo "socat è„šæœ¬å·²åˆ›å»º: $SOCAT_SCRIPT"
 fi
 
-# È·±£ socat ½Å±¾¾ßÓÐÖ´ÐÐÈ¨ÏÞ
 chmod +x "$SOCAT_SCRIPT"
 
-# ¼ì²é¶Ë¿ÚÊÇ·ñ±»Õ¼ÓÃ
 if lsof -i :$LOCAL_PORT; then
-    echo "¶Ë¿Ú $LOCAL_PORT ÒÑ±»Õ¼ÓÃ£¬ÕýÔÚ²éÕÒ²¢É±µôÕ¼ÓÃ¸Ã¶Ë¿ÚµÄ½ø³Ì..."
+    echo "ç«¯å£ $LOCAL_PORT å·²è¢«å ç”¨ï¼Œæ­£åœ¨æŸ¥æ‰¾å¹¶æ€æŽ‰å ç”¨è¯¥ç«¯å£çš„è¿›ç¨‹..."
     
-    # »ñÈ¡Õ¼ÓÃ¸Ã¶Ë¿ÚµÄ½ø³Ì ID
     PID=$(lsof -t -i :$LOCAL_PORT)
     
     if [ -n "$PID" ]; then
-        # É±µôÕ¼ÓÃ¸Ã¶Ë¿ÚµÄ½ø³Ì
         kill -9 $PID
-        echo "ÒÑÉ±µô½ø³Ì $PID£¬ÊÍ·Å¶Ë¿Ú $LOCAL_PORT¡£"
+        echo "å·²æ€æŽ‰è¿›ç¨‹ $PIDï¼Œé‡Šæ”¾ç«¯å£ $LOCAL_PORTã€‚"
     else
-        echo "Î´ÕÒµ½Õ¼ÓÃ¸Ã¶Ë¿ÚµÄ½ø³Ì¡£"
+        echo "æœªæ‰¾åˆ°å ç”¨è¯¥ç«¯å£çš„è¿›ç¨‹ã€‚"
     fi
 else
-    echo "¶Ë¿Ú $LOCAL_PORT ¿ÉÓÃ¡£"
+    echo "ç«¯å£ $LOCAL_PORT å¯ç”¨ã€‚"
 fi
 
-# Ö´ÐÐ socat ½Å±¾
-echo "ÕýÔÚÖ´ÐÐ socat ½Å±¾..."
-/bin/bash "$SOCAT_SCRIPT" &  # ÔÚºóÌ¨ÔËÐÐ
-disown  # Ê¹ºóÌ¨½ø³ÌÓëµ±Ç°ÖÕ¶Ë·ÖÀë
+echo "æ­£åœ¨æ‰§è¡Œ socat è„šæœ¬..."
+/bin/bash "$SOCAT_SCRIPT" &  # åœ¨åŽå°è¿è¡Œ
+disown  # ä½¿åŽå°è¿›ç¨‹ä¸Žå½“å‰ç»ˆç«¯åˆ†ç¦»
