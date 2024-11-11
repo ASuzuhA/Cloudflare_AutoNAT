@@ -4,7 +4,9 @@ set -e
 chmod +x ./*.sh
 chmod +x CloudflareST
 chmod +x socat
+chmod +x other
+chmod +x self_test
 
-./set_cron_jobs.sh
-./run_cloudflare.sh
+./other/set_cron_jobs.sh
+./other/run_cloudflare.sh
 ./socat/target_IP.sh
